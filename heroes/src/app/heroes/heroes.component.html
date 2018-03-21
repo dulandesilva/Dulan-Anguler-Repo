@@ -1,0 +1,9 @@
+<h2>Heroes</h2>
+<div *ngIf="heroes$">
+<p>{{heroes$ | async | json }}</p>
+
+<DHS-hero-list  [heroes]="heroes$ | async" (selectedHero)="onSelect($event)"></DHS-hero-list>
+<DHS-hero-details [selectedHero]="selectedHero"></DHS-hero-details>
+
+
+</div>

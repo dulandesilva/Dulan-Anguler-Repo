@@ -1,0 +1,25 @@
+<p>{{ hero | json }}</p>
+<div *ngIf="hero">
+
+<form #heroForm="ngForm" (ngSubmit)="submitForm()">
+
+<div>
+<label for ='name'>Name</label>
+<input type="text" #name="ngModel" id='name' name='name' [(ngModel)]="hero.name" required>
+<div [hidden]="name.valid || name.pristine">Name is required</div>
+</div>
+<div>
+<label for ='alterEgo'>AlterEgo</label>
+<input type="text" #ego="ngModel" id='alterEgo' name='alterEgo' [(ngModel)]="hero.alterEgo"  required>
+<div [hidden]="ego.valid || (ego.pristine && !ego.touched)">Name is required</div>
+</div>
+<div>
+  <label for ='specialPower'>specialPower</label>
+  <select id='specialPower' name='specialPower' [(ngModel)]="hero.specialPower">
+    <option *ngFor="let pow of powers" [value]="pow">{{pow}}</option>
+
+  </select>
+</div>
+<button type="submit" [disabled]="!heroForm.form.valid">Submit</button>
+</form>
+</div>
