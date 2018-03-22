@@ -1,6 +1,9 @@
 import { Component, OnInit , Input , Output, EventEmitter} from '@angular/core';
 import { Hero } from '../../../models/hero';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { HeroState, AppState } from '../../../redux/state/app.state';
+import * as HeroActions from '../../../redux/actions/hero.actions';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -9,12 +12,15 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./hero-list.component.css']
 })
 export class HeroListComponent implements OnInit {
-  @Input() heroes: Hero[];
-  @Output() selectedHero = new EventEmitter<Hero>();
 
-  constructor(private router: Router, private activateRoute: ActivatedRoute) { }
+  heroes$ = this.store.select('heroState').select('heroes');
+
+  constructor(private router: Router,
+     private activateRoute: ActivatedRoute,
+     private store: Store<AppState>) { }
 
   ngOnInit() {
+    this.store.dispatch(new HeroActions.LoadHeroes());
   }
   onSelect(hero: Hero) {
    // this.selectedHero.emit(hero);

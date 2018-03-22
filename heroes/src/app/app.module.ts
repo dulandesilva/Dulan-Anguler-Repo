@@ -13,9 +13,11 @@ import { InMemoryApi } from './services/in-memory-api';
 import { HeroService } from './services/hero.service';
 import { CommonModule } from '@angular/common';
 import { HeroesRoutingModule } from './modules/heroes/heroes-routing.module';
-
-
-
+import { StoreModule } from '@ngrx/store';
+import { heroReducer } from './redux/reducers/hero.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { HeroEffects } from './redux/effects/hero.effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 @NgModule({
   declarations: [
 
@@ -26,7 +28,12 @@ import { HeroesRoutingModule } from './modules/heroes/heroes-routing.module';
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemoryApi),
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    StoreModule.forRoot({heroState: heroReducer}),
+    EffectsModule.forRoot([HeroEffects]),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25
+    })
   ],
   providers: [HeroService],
   bootstrap: [AppComponent]
