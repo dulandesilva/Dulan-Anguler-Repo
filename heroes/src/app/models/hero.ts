@@ -4,7 +4,12 @@ export class Hero {
 
     alterEgo: String;
     specialPower: String;
+    addresses: Address[];
 }
+export class Address {
+  line1: String;
+  state: String;
+ }
 /*
 export const HEROES: Hero[] = [
     { id: 11, name: 'Mr. Nice' },

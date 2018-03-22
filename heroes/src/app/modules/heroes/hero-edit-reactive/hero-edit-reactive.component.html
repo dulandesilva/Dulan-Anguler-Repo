@@ -1,0 +1,34 @@
+
+<div *ngIf="heroForm">
+<form [formGroup]="heroForm" (submit)= "onSubmit()" novalidate>
+<div>
+<label for ='name'>Name</label>
+<input type="text"  id='name' #namefield formControlName="name">
+<div [hidden]= "heroForm.controls.name.valid">Name is required</div>
+</div>
+<div>
+<label >AlterEgo</label>
+<input type="text" id='alterEgo' #egoField formControlName="alterEgo">
+<div [hidden]= 'heroForm.controls.alterEgo.valid'>Ego is required</div>
+</div>
+<div>
+  <label for ='specialPower'>specialPower</label>
+  <select id='specialPower' name='specialPower' formControlName="specialPower">
+    <option *ngFor="let pow of powers" [value]="pow">{{pow}}</option>
+  </select>
+</div>
+<hr />
+<div formArrayName='addresses'>
+  <div *ngFor='let address of addresses.controls; let i=index' [formGroupName] = 'i'>
+    <label for ="line1">Line 1</label>
+    <input type ="text"  formControlName="line1" >
+
+    <label for ="state">State</label>
+    <input type ="text"  formControlName="state">
+  </div>
+</div>
+<button type="submit" [disabled]="!heroForm.valid">Submit</button>
+</form>
+</div>
+status: {{ heroForm.status |  json }}
+value: {{ heroForm.value |  json }}

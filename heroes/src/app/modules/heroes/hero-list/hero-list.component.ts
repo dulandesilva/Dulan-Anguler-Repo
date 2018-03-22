@@ -1,5 +1,5 @@
 import { Component, OnInit , Input , Output, EventEmitter} from '@angular/core';
-import { Hero } from '../models/hero';
+import { Hero } from '../../../models/hero';
 
 @Component({
   // tslint:disable-next-line:component-selector

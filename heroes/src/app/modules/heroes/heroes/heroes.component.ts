@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Hero } from '../models/hero';
+import { Hero } from '../../../models/hero';
 import { HttpClient } from '@angular/common/http';
-import { HeroService } from '../services/hero.service';
+import { HeroService } from '../../../services/hero.service';
 import { Observable } from 'rxjs/Observable';
 
 @Component({
@@ -17,8 +17,6 @@ selectedHero: Hero;
 
   ngOnInit() {
     this.heroes$ = this.heroService.getHeros();
-
-   // this.heroes = HEROES;
 
   }
 

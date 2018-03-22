@@ -3,29 +3,26 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { HeroesComponent } from './heroes/heroes.component';
-import { HeroListComponent } from './hero-list/hero-list.component';
-import { HeroDetailsComponent } from './hero-details/hero-details.component';
+
 import { HttpClient } from 'selenium-webdriver/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryApi } from './services/in-memory-api';
 import { HeroService } from './services/hero.service';
-import { HeroEditComponent } from './hero-edit/hero-edit.component';
+import { CommonModule } from '@angular/common';
+import { HeroesRoutingModule } from './modules/heroes/heroes-routing.module';
+
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HeroesComponent,
-    HeroListComponent,
-    HeroDetailsComponent,
-    HeroEditComponent
+
+   AppComponent
   ],
   imports: [
-    FormsModule,
+    CommonModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemoryApi),
     BrowserModule,
