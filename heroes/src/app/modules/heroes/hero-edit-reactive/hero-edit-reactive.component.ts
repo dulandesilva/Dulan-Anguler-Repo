@@ -35,7 +35,7 @@ heroForm: FormGroup;
   }
   onSubmit() {
     const hero = this.heroForm.value;
-    this.heroService.saveHero(hero).subscribe(h => this.router.navigateByUrl(''));
+    this.heroService.saveHero(hero).subscribe(h => this.router.navigateByUrl('heroes'));
   }
 
   createForm() {

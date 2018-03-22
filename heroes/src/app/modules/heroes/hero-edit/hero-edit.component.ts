@@ -27,7 +27,11 @@ constructor(private route: ActivatedRoute, private heroService: HeroService, pri
   }
   submitForm() {
     this.heroService.saveHero(this.hero)
-    .subscribe(h => this.router.navigateByUrl(''));
+    .subscribe(h => this.router.navigateByUrl('heroes'));
+   // .subscribe(h => this.router.navigate(['../../../heroes'], {relativeTo: this.route}));
+    // .subscribe(h => this.router.navigateByUrl('heroes'));
+
+    // this.router.navigate( ['h/' + hero.id], {relativeTo: this.activateRoute});
     // .subscribe(this.router.navigateByUrl[(' ')] );
     // return true;
   }

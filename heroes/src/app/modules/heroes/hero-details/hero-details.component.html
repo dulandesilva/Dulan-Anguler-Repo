@@ -3,6 +3,6 @@
 <div *ngIf="selectedHero">
   <h3>{{selectedHero.name | uppercase}}</h3>
   <div><span>id:</span>{{selectedHero.id}}</div>
-  <button routerLink="/hero/{{selectedHero.id}}">Edit</button>
-  <button routerLink="/heroReactive/{{selectedHero.id}}">Reactive Edit</button>
+  <button routerLink="../../hero/{{selectedHero.id}}">Edit</button>
+  <button routerLink="../../heroReactive/{{selectedHero.id}}">Reactive Edit</button>
 </div>
