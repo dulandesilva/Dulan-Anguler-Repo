@@ -8,6 +8,9 @@ export function heroReducer(state= {} as HeroState, action: Action) {
     case HeroActions.HEROES_LOADED: {
       return Object.assign({}, state, {heroes: action.payload} );
     }
+    case HeroActions.SELECT_HERO: {
+        return Object.assign({}, state, {selectedHero: action.payload} );
+    }
     default: return state;
   }
 }

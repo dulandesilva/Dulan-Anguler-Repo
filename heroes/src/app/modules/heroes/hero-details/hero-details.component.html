@@ -1,8 +1,8 @@
 
 
-<div *ngIf="selectedHero">
-  <h3>{{selectedHero.name | uppercase}}</h3>
-  <div><span>id:</span>{{selectedHero.id}}</div>
-  <button routerLink="../../hero/{{selectedHero.id}}">Edit</button>
-  <button routerLink="../../heroReactive/{{selectedHero.id}}">Reactive Edit</button>
+<div>
+  <h3>{{(selectedHero$ | async).name | uppercase}}</h3>
+  <div><span>id:</span>{{(selectedHero$ | async).id}}</div>
+  <button routerLink="../../hero/{{(selectedHero$ | async).id}}">Edit</button>
+  <button routerLink="../../heroReactive/{{(selectedHero$ | async).id}}">Reactive Edit</button>
 </div>

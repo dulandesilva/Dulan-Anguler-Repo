@@ -15,16 +15,13 @@ export class HeroListComponent implements OnInit {
 
   heroes$ = this.store.select('heroState').select('heroes');
 
-  constructor(private router: Router,
-     private activateRoute: ActivatedRoute,
+  constructor(
      private store: Store<AppState>) { }
 
   ngOnInit() {
     this.store.dispatch(new HeroActions.LoadHeroes());
   }
   onSelect(hero: Hero) {
-   // this.selectedHero.emit(hero);
-   console.log(this.router);
-  this.router.navigate( ['h/' + hero.id], {relativeTo: this.activateRoute});
+   this.store.dispatch(new HeroActions.SelectHero(hero));
   }
 }
